@@ -1,12 +1,51 @@
 
 
-{% block title %}Apex Kidney care {% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
 {% block disclaimer %}
+
 {% endblock %}
-
-
+<!doctype html>
+<html lang="en">
 {% block content %}
-  <h2>Logged out</h2>
-  <p>You have been successfully logged out.</p>
-  <p><a href="{% url 'dialysisgui:login' %}">Log in</a> again.</p>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Apex Kidney Care</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- <img src="{% static "my_app/example.jpg" %}" alt="My image"/> -->
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="signin.css" rel="stylesheet"> -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+
+  </head>
+  <br><br>
+  <body class="text-center" background="{% static 'img/login.gif' %}" style="background-size:100%100%">
+  <div>
+    <form class="form-signin" method="post">
+      <img class="mb-4" src="{% static 'img/akc.jpg' %}" alt="" width="120" height="120">
+      <h3 class="h3 mb-3 font-weight-normal" style="color:white;">Logged out</h3>
+         <p style="color:white;">You have been successfully logged out. Click the button to login again.</p>
+  			<button class="btn btn-lg btn-primary btn-block" type="submit"><p><a href="{% url 'dialysisgui:login' %}" style="text-decoration-color:white; color:white;">Log in</a></button></p>
+    
+      <div class="checkbox mb-3">
+      </div>
+      <p class="mt-5 mb-3 text-muted">&copy; apexkidneycare</p>
+    </form>
+    </div>
+  </body>
+</html>
+
+   
 {% endblock %}
+   
