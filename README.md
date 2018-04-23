@@ -6,12 +6,10 @@ Millions of patients worldwide suffer from Kidney failure and require dialysis. 
 
 ## Documentation
 A detailed [report](projectdocuments/blackbook.pdf) explains the entire project.
-
+A [sample report](Results.pdf) from the system is also included.
 Also attached are the two papers on the project:
  - [Paper 1](projectdocuments/paper-1.pdf) and its [certificates](projectdocuments/paper-1-certificates.pdf).
  - [Paper 2](projectdocuments/paper-2.pdf) and its [certificates](projectdocuments/paper-2-certificates.pdf).
-
-A [sample report](Results.pdf) from the system is also included.
 
 ## Group Members
  - Mihir Wagle - D17B - 73
