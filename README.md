@@ -18,3 +18,7 @@ Also attached are the two papers on the project:
  - Neeraj Jethnani - D17B - 26
  - Juhi Bhagtani - D17B - 07
  - Aishwarya Chandak - D17B - 11
+
+ ## Mentors
+ - Dr. Gresha Bhatia - Deputy HOD - Computer Engineering Department, V.E.S Institute of Technology.
+ - Dr. Viswanath Billa - M.D., D.M., Director - Apex Kidney Care
