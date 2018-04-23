@@ -1,0 +1,16 @@
+{% extends 'admin-base.html' %}
+{% if user.is_authenticated %}
+{% block content %}
+
+<div class="row">
+                    
+    <div class="col-md-4" style="width:100%;">
+          
+        <div class="card">                                    
+<img src="{% url 'dialysisgui:bar1' %}"/>
+</div>
+</div>
+<!-- <div class="row"> -->
+</div>
+{% endblock %}
+{% endif %}

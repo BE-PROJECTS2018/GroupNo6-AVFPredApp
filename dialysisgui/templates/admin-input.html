@@ -1,0 +1,206 @@
+{% extends 'admin-base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}Single user form{% endblock %}
+{% block disclaimer %}
+{% endblock %}
+{% block content %}
+
+
+<doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<head>
+<style type="text/css">
+
+  .accordion {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active1, .accordion:hover {
+    background-color: orange;
+}
+/* Style the accordion panel. Note: hidden by default */
+.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    float: right;
+    margin-left: 5px;
+}
+.active1:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+
+}
+.result {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+</style>
+ </head>
+
+{% if user.is_authenticated %}
+
+<!-- <div class="sidenav">
+  <a href="{% url 'dialysisgui:home' %}">Home</a>
+  <a href="{% url 'dialysisgui:about' %}">About system</a>
+  <a href="{% url 'dialysisgui:input' %}">Single patient</a>
+  <a href="{% url 'dialysisgui:upload' %}">Multiple patient</a>
+  <a href="#">Patient statistics</a>
+  <a href="#"></a>
+  </div>
+ -->  
+        <div class="container ">
+          <h3 style="text-align:center;"><b>Prediction for Single Patient</b></h3>
+          <div class="row">
+        <div class="col-sm-4">
+      
+          <form method="post">
+            {% csrf_token %}
+
+           <!-- # {{ form1 | crispy }} -->
+           {% csrf_token %}
+
+           <!-- start -->
+         
+          {{ form1.sid | as_crispy_field }}
+           {{ form1.pid | as_crispy_field }}
+
+           </div>
+           </div>
+
+<div class="row">
+        <div class="col-sm-11">
+<button class="accordion">Heart Rate*</button>
+<div class="panel">
+  <div class="row">
+        <div class="col-sm-5">
+  {{ form1.hrmax | as_crispy_field }}
+  {{ form1.hrmin | as_crispy_field }}
+  {{ form1.hrmaxmin | as_crispy_field }}
+  {{ form1.hrmean | as_crispy_field }}
+  {{ form1.hrstd | as_crispy_field }}   
+  </div>
+  </div>     
+</div>
+<button class="accordion">Systolic Blood Pressure*</button>
+<div class="panel">
+<div class="row">
+        <div class="col-sm-5">
+  {{ form1.sbpmax | as_crispy_field }}
+  {{ form1.sbpmin | as_crispy_field }}
+  {{ form1.sbpmaxmin | as_crispy_field }}
+  {{ form1.sbpmean | as_crispy_field }}
+  {{ form1.sbpstd | as_crispy_field }} 
+  </div>
+  </div>                  
+</div>
+<button class="accordion">Diastolic Blood Pressure*</button>
+<div class="panel">
+<div class="row">
+        <div class="col-sm-5">
+  {{ form1.dbpmax | as_crispy_field }}
+  {{ form1.dbpmin | as_crispy_field }}
+  {{ form1.dbpmaxmin | as_crispy_field }}
+  {{ form1.dbpmean | as_crispy_field }}
+  {{ form1.dbpstd | as_crispy_field }} 
+  </div>
+  </div>       
+</div>
+<button class="accordion">Venus Presure*</button>
+<div class="panel">
+<div class="row">
+        <div class="col-sm-5">
+  {{ form1.vpmax | as_crispy_field }}
+  {{ form1.vpmin | as_crispy_field }}
+  {{ form1.vpmaxmin | as_crispy_field }}
+  {{ form1.vpmean | as_crispy_field }}
+  {{ form1.vpstd | as_crispy_field }}    
+  </div>
+  </div>    
+</div>
+  <button class="accordion">Arterial Pressure*</button>
+<div class="panel">
+<div class="row">
+        <div class="col-sm-5">
+  {{ form1.apmax | as_crispy_field }}
+  {{ form1.apmin | as_crispy_field }}
+  {{ form1.apmaxmin | as_crispy_field }}
+  {{ form1.apmean | as_crispy_field }}
+  {{ form1.apstd | as_crispy_field }}        
+  </div>
+  </div>
+</div>
+<button class="accordion"> KT/V and TBV slope* </button>
+<div class="panel">
+<div class="row">
+        <div class="col-sm-5">
+  {{ form1.ktvslope | as_crispy_field }}
+  {{ form1.tbvslope | as_crispy_field }}
+  </div>
+  </div>
+</div>
+
+
+            
+          
+          </div>
+          </div>
+        </div>
+        
+        <div class="container">
+        
+        
+        <!--<h4> Results : {{ pred }} </h4>-->
+      
+            <button type="submit" class="result">Result</button>
+            
+        </form>
+          
+    
+        </div>
+
+<!-- * -->
+
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active1");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+{% endif %}
+{% endblock %}
+</html>

@@ -1,0 +1,57 @@
+{% extends user.is_staff|yesno:'admin-base.html,base.html' %}
+{% block title %}Upload{% endblock %}
+{% load crispy_forms_tags %}
+{% block disclaimer %}
+{% endblock %}
+{% block content %}
+
+<style type="text/css">
+.result {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+</style>
+<doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+{% if user.is_authenticated %}
+	
+  		<h2 align="center">Prediction for Multiple Patients </h2><br><br>
+        <div class="container " style="margin:auto; width:40%; border: 3px solid green"  >
+        <div class="row" style="margin:auto; width:50%;">
+        <div class="col-sm-5" style="margin:auto; width:100%;">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                {{ form2.description | as_crispy_field }}
+                <br>
+                {{ form2.document }}
+          
+                <br><br><button type="submit" class="result" onclick="model()">Upload</button>
+                <script>
+                    function model() {
+                        alert("Please wait your file is uploaded!");
+                        }
+                </script>
+                <br><br>
+                
+                <br>
+                <br>
+              </form>
+
+          </div>
+          </div>
+        </div>
+      
+	
+{% endif %}
+{% endblock %}

@@ -1,0 +1,240 @@
+{% load static %}
+{% if user.is_authenticated %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/apple-icon.png' %}" />
+    <link rel="icon" type="image/png" href="{% static 'assets/img/favicon.png' %}" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>{% block title %}Apex Kidney Care Fistula health{% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!--  Material Dashboard CSS    -->
+    <link href="{% static 'assets/css/material-dashboard.css' %}" rel="stylesheet" />
+    
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+            .navbar {
+                overflow: hidden;
+                background-color: #333;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            
+            .navbar a {
+                float: left;
+                font-size: 16px;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            
+            .dropdown {
+                float: left;
+                overflow: hidden;
+            }
+            
+            .dropdown .dropbtn {
+                cursor: pointer;
+                font-size: 16px;    
+                border: none;
+                outline: none;
+                color: #555555;
+                padding: 14px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+            
+            .navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
+                background-color: transparent;
+            }
+            
+            .dropdown-content {
+                display: none;
+                position: relative;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                
+            }
+            
+            .dropdown-content a {
+                float: none;
+                color: black;
+                
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+            
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+            
+            .show {
+                display: block;
+            }
+            </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar" data-color="green" data-image="{% static 'assets/img/sidebar-1.jpg' %}">
+            <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    &nbsp&nbsp&nbsp&nbsp<img class="mb-4" src="{% static 'img/akc.jpg' %}" alt="" width="150" height="130">
+                </a>
+            </div>
+            <div class="sidebar-wrapper">
+                <ul class="nav">
+                    <li class="active">
+                        <a href="{% url 'dialysisgui:patient_history' %}">
+                            <i class="material-icons">dashboard</i>
+                            <p>Home</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'dialysisgui:upload' %}">
+                            <i class="material-icons"><!-- statistics --></i>
+                            <p>Prediction using CSV input</p>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="{% url 'dialysisgui:input' %}">
+                            <i class="material-icons"><!-- graphs --></i>
+                            <p>Prediction using Manual input</p>
+                        </a>
+                    </li>
+                    
+                    
+
+                    
+                    <li>
+                        <a href="./typography.html">
+                            <i class="material-icons"><!-- single person --></i>
+                            <p></p>
+                        </a>
+                    </li>
+                    <!--<li>
+                        <a href="./maps.html">
+                            <i class="material-icons">location_on</i>
+                            <p>Maps</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./notifications.html">
+                            <i class="material-icons text-gray">notifications</i>
+                            <p>Notifications</p>
+                        </a>
+                    </li>
+                    <li class="active-pro">
+                        <a href="upgrade.html">
+                            <i class="material-icons">unarchive</i>
+                            <p>Upgrade to PRO</p>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            
+        </div>
+        
+        <div class="main-panel">
+                <nav class="navbar navbar-transparent navbar-absolute" >
+                        <div class="container-fluid" >
+                            <div class="navbar-header" >
+                                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#" style=" font-size:40px;" > Supporting staff Profile </a>
+                            </div>
+                            <div class="collapse navbar-collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                                                        <li class="dropdown">
+                                        <button class="dropbtn"  onclick="myFunction()" style="font-size:40px; padding-top:1px; padding-right:20px;">
+                                            <i class="material-icons" style="font-size:40px;" >person</i>
+                                            <p class="hidden-lg hidden-md">Profile</p>
+                                            {% if user.is_authenticated %}
+                                                     {{ user.username }} {% endif %}
+                                        </button>
+                                        <div class="dropdown-content" id="myDropdown">
+                                                <a href="#">Change Password</a>
+                                                <a href="{% url 'logout' %}">Logout</a>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                                
+                            </div>
+                        </div>
+                    </nav>
+            <div class="content">
+        <main>
+            {% block content %}
+            
+            {% endblock %}
+          </main>
+          </div>
+        </div>
+        </div>
+        
+    </div>
+    
+</body>
+<script>function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+      if (!e.target.matches('.dropbtn')) {
+        var myDropdown = document.getElementById("myDropdown");
+          if (myDropdown.classList.contains('show')) {
+            myDropdown.classList.remove('show');
+          }
+      }
+    }</script>
+<!--   Core JS Files   -->
+<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'assets/js/material.min.js' %}" type="text/javascript"></script>
+<!--  Charts Plugin -->
+<script src="{% static 'assets/js/chartist.min.js' %}"></script>
+<!--  Dynamic Elements plugin -->
+<script src="{% static 'assets/js/arrive.min.js' %}"></script>
+<!--  PerfectScrollbar Library -->
+<script src="{% static 'assets/js/perfect-scrollbar.jquery.min.js' %}"></script>
+<!--  Notifications Plugin    -->
+<script src="{% static 'assets/js/bootstrap-notify.js' %}"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<!-- Material Dashboard javascript methods -->
+<script src="{% static 'assets/js/material-dashboard.js' %}"></script>
+<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+<script src="{% static 'assets/js/demo.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
+
+    });
+</script>
+
+</html>
+{% endif %}

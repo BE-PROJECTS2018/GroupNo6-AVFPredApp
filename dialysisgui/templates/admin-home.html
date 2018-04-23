@@ -1,0 +1,93 @@
+{% extends 'admin-base.html' %}
+{% if user.is_authenticated %}
+{% block content %}
+
+<head>
+    <style>
+    .select
+    {
+        width: 350px;
+        background: white;
+        height: 40px;
+        font-size: 30px;
+        
+    }
+    h3
+    {
+        color: rgb(189, 10, 100)
+    }
+    </style>
+    
+</head>    
+    
+ <form method="POST">          
+            
+    <div class="card-content" style="background: lightblue">
+        <h2 class="title" style="color:white; text-align:center"><b>Accuracy of Algorithms</b></h2>
+                                    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header card-chart">
+                    <div class="ct-chart">
+                        <img src="/media/rfc1.png"/>
+                    </div>
+                </div>
+                <div class="card-content" style="background:green">
+                    <h4 class="title" style="color:white"><b>Random forest</b></h4>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <!-- <div class="row"> -->
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header card-chart" >
+                    <div class="ct-chart">
+                        <img src="/media/svm1.png"/>
+                    </div>
+                </div>
+                <div class="card-content" style="background:rgb(189, 10, 100)">
+                    <h4 class="title" style="color:white"><b>SVM</b></h4>
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header card-chart">
+                    <div class="ct-chart">
+                        <img src="/media/mlp1.png"/>
+                    </div>
+                </div>
+                <div class="card-content" style="background:orange">
+                    <h4 class="title" style="color:white"><b>Multi-Layer Perceptron</b></h4>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+        <br>
+    <div class="row">
+                    
+                <div class="col-md-4" style="width:100%;">
+                        
+                    <div class="card">                                                 
+                                <img id="img" src="{% url 'dialysisgui:bar' %}" style="width:100%"; height="30px";>
+                            
+                        
+                        
+                        
+                    </div>
+                </div>
+                <!-- <div class="row"> -->
+                </div>
+                </form>
+                
+                
+       
+    {% endblock %}
+    {% endif %}

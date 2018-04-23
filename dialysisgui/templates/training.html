@@ -1,0 +1,67 @@
+{% extends 'admin-base.html' %}
+{% block title %}Upload{% endblock %}
+{% load crispy_forms_tags %}
+{% block disclaimer %}
+{% endblock %}
+{% block content %}
+
+<style type="text/css">
+.result {
+    background-color: green;
+    color: white;
+    cursor: pointer;
+    padding: 8px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+</style>
+<doctype html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+{% if user.is_authenticated %}
+    
+        <h2 align="center"> Training and testing </h2><br><br>
+        <div class="container " style="margin:auto; width:40%; border: 3px solid green"  >
+        <div class="row" style="margin:auto; width:50%;">
+        <div class="col-sm-5" style="margin:auto; width:100%;">
+            <form method="post" enctype="multipart/form-data" action="#">
+                {% csrf_token %}
+                <br>
+                <select name = "drop1" >
+<!--                link for select: https://www.reddit.com/r/django/comments/41kl0r/how_to_post_the_value_of_a_select_tag_to_django/
+ -->                    <option>Select the algorithm to train</option>
+                    <option value="1">Random Forrest</option>
+                    <option value="2">SVM</option>
+                    <option value="3">Multilevel perceptron</option>
+                </select>
+                {{ form2.description | as_crispy_field }}
+                <br>
+                {{ form2.document }}
+          
+                <br><br><button type="submit" class="result" onclick="model()">Train and test</button>
+                <script>
+                    function model() {
+                        alert("Please wait your training model is being created!");
+                        }
+                </script>
+                <!-- <button type="submit" class="result"></button> -->
+                <br><br>
+                Output:
+                <textarea placeholder="Accuracy(in percentage)" rows="6">{{ accuracy }}</textarea>
+                <!-- {{ pred1 }} -->
+                <br>
+                <br>
+              </form>
+
+          </div>
+          </div>
+        </div>
+      
+    
+{% endif %}
+{% endblock %}

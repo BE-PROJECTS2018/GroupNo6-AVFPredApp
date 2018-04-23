@@ -1,0 +1,90 @@
+{% load static%}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ <html>
+     <head>
+         <title>Report</title>
+         <style type="text/css">
+             body {
+                 font-weight: 200;
+                 font-size: 14px;
+             }
+             .header {
+                 font-size: 20px;
+                 font-weight: 100;
+                 text-align: center;
+                 color: #007cae;
+             }
+             .title {
+                 font-size: 22px;
+                 font-weight: 100;
+                /* text-align: right;*/
+                padding: 10px 20px 0px 20px;  
+             }
+             .title span {
+                 color: #007cae;
+             }
+             .details {
+                 padding: 10px 20px 0px 20px;
+                 text-align: left !important;
+                 /*margin-left: 40%;*/
+             }
+             .hrItem {
+                 border: none;
+                 height: 1px;
+                 /* Set the hr color */
+                 color: #333; /* old IE */
+                 background-color: #fff; /* Modern Browsers */
+             }
+         </style>
+     </head>
+     <body>
+         <div class='wrapper'>
+             <div class='header'>
+             <img class="mb-4" src="{% static 'img/akc.jpg' %}" alt="" width="150" height="130">
+                 <p class='title'>Patient Report {{pid}}</p>
+             </div>
+         <div>
+         <div class='details'>
+             Session ID: {{ sid }}<br>
+             Patient ID:  {{ pid }}<br>
+             <u>Heart Rate</u> ---------------------------------------------------------------<br>
+             Max Heart Rate: {{ hrmax }}<br>     
+             Min Heart Rate: {{ hrmin }} <br>
+             Max-Min Heart Rate: {{ hrmaxmin }}<br>
+             Mean Heart Rate: {{ hrmean }}<br>
+             Std Heart Rate: {{ hrstd }}<br>
+             <u>Systolic Blood Pressure</u> ---------------------------------------------------<br>
+             Max Systolic Blood Pressure: {{ sbpmax }}<br>
+             Min Systolic Blood Pressure: {{ sbpmin }}<br>
+             Max-Min Systolic Blood Pressure: {{ sbpmaxmin }}<br>
+             Mean Systolic Blood Pressure: {{ sbpmean }}<br>
+             Std Systolic Blood Pressure: {{ sbpstd }}<br>
+             <u>Diastolic Blood Presure</u> ----------------------------------------------------<br>
+             Max Diastolic Blood Presure: {{ dbpmax }}<br>
+             Min Diastolic Blood Presure: {{ dbpmin }}<br>
+             Max-Min Diastolic Blood Presure: {{ dbpmaxmin }}<br>
+             Mean Diastolic Blood Presure: {{ dbpmean }}<br>
+             Std Diastolic Blood Presure: {{ dbpstd }}<br>
+             <u>Venous Pressure</u>-------------------------------------------------------------<br>
+             Max Venous Pressure: {{ vpmax }}<br>
+             Min Venous Pressure: {{ vpmin }}<br>
+             Max-Min Venous Pressure: {{ vpmaxmin }}<br>
+             Mean Venous Pressure: {{ vpmean }}<br>
+             Std Venous Pressure: {{ vpstd }}<br>
+             <u>Arterial Pressure</u> -----------------------------------------------------------<br>
+             Max Arterial Pressure: {{ apmax }}<br>
+             Min Arterial Pressure: {{ apmin }}<br>
+             Max-Min Arterial Pressure: {{ apmaxmin }}<br>
+             Mean Arterial Pressure: {{ apmean }}<br>
+             Std Arterial Pressure: {{ apstd }}<br>
+             <u>Kt/V</u> -------------------------------------------------------------------------<br>
+             Kt/V Slope: {{ ktvslope }}<br>
+             <u>TBV</u> --------------------------------------------------------------------------<br>
+             TBV Slope: {{ tbvslope }}<br>
+             <u><b>Result</b></u> -------------------------------------------------------------------------</h3><br>
+             Prediction: {{ pred }}
+             <hr class='hrItem' />
+         </div>
+     </div>
+     </body>
+ </html>
