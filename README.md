@@ -1,4 +1,4 @@
-# AVFPredApp
+# Fistula Health Monitoring System
 A Django Application which uses pretrained Scikit Learn models of MLP, RFC and SVM to predict life of Arteriovenous Fistula.
 
 ## Abstract
